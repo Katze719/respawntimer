@@ -32,6 +32,7 @@ export const PROGRESS_BAR_SETTINGS = {
 	barIconFull: '●',
 	barIconEmpty: '○'
 };
+
 // Alternative icons you could use:
 // 1. Block characters
 // barIconFull: '▓',
