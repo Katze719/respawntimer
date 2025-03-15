@@ -1,0 +1,6 @@
+FROM python:3-alpine as builder
+
+# Add node and pnpm
+RUN apk add --update npm
+RUN npm install -g pnpm
+RUN apk add libtool autoconf automake g++ make git

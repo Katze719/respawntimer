@@ -5,7 +5,7 @@ FROM python:3-alpine as builder
 # Add node and pnpm
 RUN apk add --update npm
 RUN npm install -g pnpm
-RUN apk add libtool autoconf automake g++ make
+RUN apk add libtool autoconf automake g++ make ffmpeg
 
 # change working directory
 WORKDIR /usr/src/app
@@ -27,7 +27,7 @@ RUN pnpm run build
 FROM python:3-alpine
 
 # Add node and pnpm
-RUN apk add --update npm
+RUN apk add --update npm ffmpeg
 RUN npm install -g pnpm
 
 # change working directory
