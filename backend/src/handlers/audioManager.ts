@@ -86,11 +86,11 @@ const voiceMap: Partial<
 		}[]
 	>
 > = {};
-export type Voices = 'male' | 'female' | 'female legacy' | 'material' | 'rocket league';
+export type Voices = 'male' | 'female' | 'female german' | 'material' | 'rocket league';
 export const voices: Record<Voices, string> = {
 	female: 'A generic female voice',
 	male: 'A generic male voice',
-	'female legacy': 'The original female voice',
+	'female german': 'Sexy Deutsche stimme ;D',
 	material: 'Sound effects from the material library',
 	'rocket league': 'Rocket League sound effects'
 };
@@ -132,8 +132,8 @@ class AudioManager extends Manager<Extended> {
 				const respawnData = customTimings
 					? TimingsSettings.convertToRespawnData(TimingsSettings.convertToSeconds(customTimings)!)
 					: TimingsSettings.convertToRespawnData(
-							TimingsSettings.convertToSeconds(TimingsSettings.DEFAULT)!
-						);
+						TimingsSettings.convertToSeconds(TimingsSettings.DEFAULT)!
+					);
 
 				this.handleSounds(respawnData, voice, voiceConnection);
 			}
