@@ -11,7 +11,7 @@ export const debug = ((): boolean => {
 
 export const WARTIMER_INTERACTION_ID = 'wartimer';
 export const WARTIMER_INTERACTION_SPLIT = '-';
-export const WARTIMER_ICON_LINK = 'https://cdn.discordapp.com/avatars/1350431240993374218/17cc8c0f1b43ee2cdec853a0493cf680.webp?size=1024';
+export const WARTIMER_ICON_LINK = 'https://cdn.discordapp.com/avatars/1350431240993374218/f6854768d2efb20dfaab137fe8248a6f.webp?size=1024';
 export const EXCLAMATION_ICON_LINK = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Orange_exclamation_mark.svg/240px-Orange_exclamation_mark.svg.png';
 export const WARN_ICON_LINK = 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Icons8_flat_high_priority.svg/240px-Icons8_flat_high_priority.svg.png';
 // Author: Videoplasty.com, Source: https://de.wikipedia.org/wiki/Datei:Light_Bulb_or_Idea_Flat_Icon_Vector.svg

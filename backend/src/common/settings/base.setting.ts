@@ -28,7 +28,7 @@ export abstract class BaseSetting<
     public description: string | undefined;
     public footer: string | undefined;
     public customEmbeds: EmbedBuilder[] | undefined;
-    
+
     protected constructor(
         id: string,
         buttonStyle: ButtonStyle,
@@ -72,7 +72,7 @@ export abstract class BaseSetting<
         // Init Description Embed(s)
         let embeds = this.customEmbeds ?? [new EmbedBuilder()
             .setAuthor({ iconURL: 'https://cdn3.emoji.gg/emojis/2637-settings.png', name: this.title || 'Missing Title' })
-            .setThumbnail('https://cdn.discordapp.com/avatars/993116789284286484/c5d1f8c2507c7f2a56a2a330109e66d2?size=1024')
+            .setThumbnail('https://cdn.discordapp.com/avatars/1350431240993374218/f6854768d2efb20dfaab137fe8248a6f.webp?size=1024')
             .setDescription(this.description || 'Missing Description')]
 
         if (!this.customEmbeds && this.footer) {
@@ -103,7 +103,7 @@ export abstract class BaseSetting<
             embeds: embeds,
             components: rows
         };
-        
+
         return await interaction.editReply(content);
     }
     public getCustomId(id: string, args: string[]): string {
