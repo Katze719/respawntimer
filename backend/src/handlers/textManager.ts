@@ -26,8 +26,8 @@ class TextManager extends Manager {
 				const respawnData = customTimings
 					? TimingsSettings.convertToRespawnData(TimingsSettings.convertToSeconds(customTimings)!)
 					: TimingsSettings.convertToRespawnData(
-							TimingsSettings.convertToSeconds(TimingsSettings.DEFAULT)!
-						);
+						TimingsSettings.convertToSeconds(TimingsSettings.DEFAULT)!
+					);
 				const description = this.getDescription(respawnData);
 				await widget.update({ description });
 			}
@@ -61,14 +61,13 @@ class TextManager extends Manager {
 		const bar = this.getBar(info.respawn.duration, info.respawn.timeUntilRespawn);
 
 		const title = this.getTitle(info.respawn.remainingRespawns, info.respawn.timeUntilRespawn);
-		const barSection = bar ? `### ${bar}\n\n` : '';
+		const barSection = bar ? `## ${bar}\n\n` : '';
 		const respawnDuration = info.respawn.duration >= 0 ? info.respawn.duration : '-';
 		const nextRespawnDuration = info.respawn.durationNext >= 0 ? info.respawn.durationNext : '-';
 		const nextRespawnIndicator = info.respawn.durationNext > info.respawn.duration ? ' ⬆️' : '';
 		const remainingRespawns = info.respawn.remainingRespawns;
-		const formattedTimeLeft = `${timeLeftMinutes > 9 ? timeLeftMinutes : '0' + timeLeftMinutes}:${
-			timeLeftSeconds > 9 ? timeLeftSeconds : '0' + timeLeftSeconds
-		}`;
+		const formattedTimeLeft = `${timeLeftMinutes > 9 ? timeLeftMinutes : '0' + timeLeftMinutes}:${timeLeftSeconds > 9 ? timeLeftSeconds : '0' + timeLeftSeconds
+			}`;
 
 		return (
 			`# ${title}\n` +
@@ -106,7 +105,7 @@ class TextManager extends Manager {
 		}
 
 		const icon = timeLeft === 0 ? '🔶' : '🔸';
-		return `${icon} ${respawn}`;
+		return `# ${icon} ${respawn}`;
 	}
 }
 export default new TextManager();
