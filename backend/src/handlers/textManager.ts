@@ -105,7 +105,7 @@ class TextManager extends Manager {
 		}
 
 		const icon = timeLeft === 0 ? '🔶' : '🔸';
-		return `# ${icon} ${respawn}`;
+		return `${icon} ${respawn}`;
 	}
 }
 export default new TextManager();
