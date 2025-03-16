@@ -61,7 +61,7 @@ class TextManager extends Manager {
 		const bar = this.getBar(info.respawn.duration, info.respawn.timeUntilRespawn);
 
 		const title = this.getTitle(info.respawn.remainingRespawns, info.respawn.timeUntilRespawn);
-		const barSection = bar ? `## ${bar}\n\n` : '';
+		const barSection = bar ? `# ${bar}\n\n` : '';
 		const respawnDuration = info.respawn.duration >= 0 ? info.respawn.duration : '-';
 		const nextRespawnDuration = info.respawn.durationNext >= 0 ? info.respawn.durationNext : '-';
 		const nextRespawnIndicator = info.respawn.durationNext > info.respawn.duration ? ' ⬆️' : '';
