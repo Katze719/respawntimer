@@ -39,14 +39,14 @@ import { getEventVoiceChannel } from './util/discord';
 //TODO: do this when widget tries to update and message is not found
 /**
  if (reason === ECollectorStopReason.DISPOSE || this.isResetting) return;
-        // Delete from memory when stopped because message was deleted
-        const widgetIndex = Widget.LIST.findIndex(
-          (widget) => widget.getId() === this.getId()
-        );
-        if (widgetIndex !== -1) {
-          const [widget] = Widget.LIST.splice(widgetIndex, 1);
-          textManager.unsubscribe(widget.getId(), true);
-        }
+		// Delete from memory when stopped because message was deleted
+		const widgetIndex = Widget.LIST.findIndex(
+		  (widget) => widget.getId() === this.getId()
+		);
+		if (widgetIndex !== -1) {
+		  const [widget] = Widget.LIST.splice(widgetIndex, 1);
+		  textManager.unsubscribe(widget.getId(), true);
+		}
  */
 
 //TODO: see if Widget.LIST is even necessary
@@ -187,16 +187,15 @@ export class Widget {
 				const apiKeyStatus = dbGuild.raidHelper.apiKeyValid
 					? 'Enabled'
 					: dbGuild.raidHelper.apiKey
-					? '⚠️'
-					: 'Disabled';
+						? '⚠️'
+						: 'Disabled';
 
 				embed.setFooter({
 					text:
 						`Raidhelper Integration » ${apiKeyStatus}` +
-						`${
-							dbGuild.assistantRoleIDs.length === 0
-								? '\n\nMissing permission setup.\nAnyone can use the widget!'
-								: ''
+						`${dbGuild.assistantRoleIDs.length === 0
+							? '\n\nMissing permission setup.\nAnyone can use the widget!'
+							: ''
 						}`
 				});
 
@@ -233,7 +232,7 @@ export class Widget {
 	private static async getEventDisplayFields(dbGuild: DBGuild): Promise<EmbedField[]> {
 		const event = dbGuild.raidHelper.events.reduce((lowest, current) =>
 			Math.abs(current.startTimeUnix * 1000 - Date.now()) <
-			Math.abs(lowest.startTimeUnix * 1000 - Date.now())
+				Math.abs(lowest.startTimeUnix * 1000 - Date.now())
 				? current
 				: lowest
 		);
@@ -241,11 +240,11 @@ export class Widget {
 		const voiceChannel = await getEventVoiceChannel(event, dbGuild).catch(() => null);
 		const permissionText = voiceChannel
 			? await checkChannelPermissions(voiceChannel, ['ViewChannel', 'Connect', 'Speak']).catch(
-					(e) => String(e)
-			  )
+				(e) => String(e)
+			)
 			: undefined;
 
-			
+
 		const channelInfo = voiceChannel
 			? `${voiceChannel}`
 			: '⚠️ *No Default Voice Channel Set*';
@@ -308,8 +307,8 @@ export class Widget {
 
 		return message
 			.delete()
-			.then(() => {})
-			.catch(() => {});
+			.then(() => { })
+			.catch(() => { });
 	}
 	public async update(options?: {
 		title?: string;
@@ -442,7 +441,7 @@ export class Widget {
 				default:
 					throw new Error('Could not complete request');
 			}
-			await interaction.deferUpdate().catch(() => {});
+			await interaction.deferUpdate().catch(() => { });
 		} catch (error) {
 			interaction
 				.reply({
@@ -469,27 +468,30 @@ export class Widget {
 		);
 	}
 	private getButtons(disableToggle = false, disableVoice = false): ActionRowBuilder<ButtonBuilder> {
-		const buttonConfigs: (Partial<Omit<ButtonComponentData, 'customId'>> & {
-			id: string;
-		})[] = [
-			{
-				id: EWidgetButtonID.TEXT,
-				label: this.textState ? '📝' : '📝',
-				style: this.textState ? ButtonStyle.Danger : ButtonStyle.Success,
-				disabled: disableToggle
-			},
-			{
-				id: EWidgetButtonID.VOICE,
-				label: this.voiceState ? '🔇' : '🔊',
-				style: this.voiceState ? ButtonStyle.Danger : ButtonStyle.Success,
-				disabled: disableVoice
-			},
-			{
-				id: EWidgetButtonID.SETTINGS,
-				label: '⚙️',
-				style: ButtonStyle.Primary
-			}
-		];
+		const buttonConfigs: {
+			id: EWidgetButtonID;
+			label?: string;
+			style?: ButtonStyle;
+			disabled?: boolean;
+		}[] = [
+				{
+					id: EWidgetButtonID.TEXT,
+					label: this.textState ? '📝' : '📝',
+					style: this.textState ? ButtonStyle.Danger : ButtonStyle.Success,
+					disabled: disableToggle
+				},
+				{
+					id: EWidgetButtonID.VOICE,
+					label: this.voiceState ? '🔇' : '🔊',
+					style: this.voiceState ? ButtonStyle.Danger : ButtonStyle.Success,
+					disabled: disableVoice
+				},
+				{
+					id: EWidgetButtonID.SETTINGS,
+					label: '⚙️',
+					style: ButtonStyle.Primary
+				}
+			];
 
 		const actionRow = new ActionRowBuilder<ButtonBuilder>();
 		for (const config of buttonConfigs) {
