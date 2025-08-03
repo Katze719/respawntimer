@@ -91,9 +91,9 @@ export const voices: Record<Voices, string> = {
 	female: 'A generic female voice',
 	male: 'A generic male voice',
 	'female german': 'Sexy Deutsche stimme ;D',
-	jenny: 'made by Pfleger ;D',
-	'klaus dieter': 'made by Pfleger ;D',
-	'peter': 'made by Pfleger ;D',
+	jenny: 'some voice',
+	'klaus dieter': 'some voice',
+	'peter': 'some voice',
 	'rocket league': 'Rocket League sound effects'
 };
 
