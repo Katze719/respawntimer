@@ -9,17 +9,17 @@ export enum EAdvancedChannelSelectReturnValue {
  * This acts as a StringSelectMenuBuilder but sets its own options by converting all
  */
 const EMOJIS = Object.freeze({
-	VOICE: { name: 'voicebadge', id: '1155162483162632252' },
-	TEXT: { name: 'forumbadge', id: '1153001819069493330' },
-	NEXT: { name: 'nextbadge', id: '1155190707045290063' },
-	PREV: { name: 'prevbadge', id: '1155190708362293268' },
-	UNSET: { name: 'deletebadge', id: '1231192205381730357' }
+	VOICE: '🔊',
+	TEXT: '💬',
+	NEXT: '▶️',
+	PREV: '◀️',
+	UNSET: '🗑️'
 });
 export class AdvancedChannelSelectMenu {
 	public constructor(
 		private selectMenu: StringSelectMenuBuilder,
 		private channels: GuildChannel[]
-	) {}
+	) { }
 	public getMenu(): StringSelectMenuBuilder {
 		return this.selectMenu;
 	}
@@ -38,7 +38,7 @@ export class AdvancedChannelSelectMenuBuilder {
 		private guild: Guild,
 		private user: User,
 		private options: { allowUnset: boolean } = { allowUnset: false }
-	) {}
+	) { }
 	public setChannelType(type: ChannelType): this {
 		this.channelType = type;
 		return this;
@@ -95,8 +95,7 @@ export class AdvancedChannelSelectMenuBuilder {
 					.setDisabled(true)
 					.setCustomId(this.customId)
 					.setPlaceholder(
-						`No ${
-							this.channelType === ChannelType.GuildVoice ? 'voice' : 'text'
+						`No ${this.channelType === ChannelType.GuildVoice ? 'voice' : 'text'
 						} channels available.`
 					),
 				[]
@@ -115,7 +114,7 @@ export class AdvancedChannelSelectMenuBuilder {
 			.slice(
 				startIndex,
 				Math.min(startIndex + amountOnPage, this.channels.length) -
-					Number(this.options.allowUnset && this.page === 1)
+				Number(this.options.allowUnset && this.page === 1)
 			)
 			.map(this.getOption.bind(this));
 
