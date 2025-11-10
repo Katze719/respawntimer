@@ -86,15 +86,14 @@ const voiceMap: Partial<
 		}[]
 	>
 > = {};
-export type Voices = 'male' | 'female' | 'female german' | 'japanese female' | 'jenny' | 'klaus dieter' | 'peter' | 'rocket league';
+export type Voices = 'male' | 'female' | 'female german' | 'japanese female' | 'jenny' | 'klaus dieter' | 'rocket league';
 export const voices: Record<Voices, string> = {
-	female: 'A generic female voice',
-	male: 'A generic male voice',
-	'female german': 'Sexy Deutsche stimme ;D',
-	'japanese female': 'japanese female voice',
-	jenny: 'some voice',
-	'klaus dieter': 'some voice',
-	'peter': 'some voice',
+	female: 'A generic english female voice',
+	male: 'A generic english male voice',
+	'female german': 'A female german voice',
+	'japanese female': 'A female english voice with a japanese accent',
+	jenny: 'A female german voice',
+	'klaus dieter': 'A german male voice',
 	'rocket league': 'Rocket League sound effects'
 };
 
